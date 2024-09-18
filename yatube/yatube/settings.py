@@ -25,7 +25,7 @@ SECRET_KEY = 'z9%5x)f_ydx2i((pt&-$!ah=qrajlpv4z!0*tv%0czmo8n4%r3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
+    'about.apps.AboutConfig',
+    'sorl.thumbnail',
+
 
 ]
 
@@ -133,3 +136,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
+
+COUNT_POST = 10
+
+CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

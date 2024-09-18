@@ -4,8 +4,6 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-
-
 class Group(models.Model):
     title = models.CharField(
         max_length = 200
@@ -35,6 +33,17 @@ class Post(models.Model):
         null=True,
         on_delete=models.CASCADE,
     )
+    image = models.ImageField(
+        'Картинка',
+        upload_to='posts/',
+        blank=True
+    )
+
+
+    class Meta:
+        ordering = ('-pub_date',)
+        verbose_name = 'Пост'
+        verbose_name_plural = 'Посты'
 
     def __str__(self):
-        return self.text[:10]
+        return self.text[:15]
